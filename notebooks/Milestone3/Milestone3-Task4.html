@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>m3t4</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Milestone3-Task4</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14599,8 +14599,8 @@ a.anchor-link {
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 <table>
-<tr><th>ID</th><th>YARN Application ID</th><th>Kind</th><th>State</th><th>Spark UI</th><th>Driver log</th><th>Current session?</th></tr><tr><td>5</td><td>application_1650015868622_0006</td><td>pyspark</td><td>idle</td><td><a target="_blank" href="http://ip-172-31-57-67.us-west-2.compute.internal:20888/proxy/application_1650015868622_0006/" class="emr-proxy-link" emr-resource="j-3NOAS05CVA8Q
-" application-id="application_1650015868622_0006">Link</a></td><td><a target="_blank" href="http://ip-172-31-57-67.us-west-2.compute.internal:8042/node/containerlogs/container_1650015868622_0006_01_000001/livy" >Link</a></td><td>✔</td></tr></table>
+<tr><th>ID</th><th>YARN Application ID</th><th>Kind</th><th>State</th><th>Spark UI</th><th>Driver log</th><th>Current session?</th></tr><tr><td>1</td><td>application_1650043905968_0002</td><td>pyspark</td><td>idle</td><td><a target="_blank" href="http://ip-172-31-49-77.us-west-2.compute.internal:20888/proxy/application_1650043905968_0002/" class="emr-proxy-link" emr-resource="j-25ULWI72E94GC
+" application-id="application_1650043905968_0002">Link</a></td><td><a target="_blank" href="http://ip-172-31-49-77.us-west-2.compute.internal:8042/node/containerlogs/container_1650043905968_0002_01_000001/livy" >Link</a></td><td>✔</td></tr></table>
 </div>
 
 </div>
@@ -15018,7 +15018,7 @@ Some additional reading <a href="https://projector-video-pdf-converter.datacamp.
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python3"><pre><span></span><span class="c1"># Print run info</span>
@@ -15026,7 +15026,8 @@ Some additional reading <a href="https://projector-video-pdf-converter.datacamp.
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==========&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">CV Score: </span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">cvModel</span><span class="o">.</span><span class="n">avgMetrics</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;numTrees: </span><span class="si">{</span><span class="n">cvModel</span><span class="o">.</span><span class="n">bestModel</span><span class="o">.</span><span class="n">getNumTrees</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;numTrees: </span><span class="si">{</span><span class="n">cvModel</span><span class="o">.</span><span class="n">bestModel</span><span class="o">.</span><span class="n">getMaxDepth</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;bootstrap: </span><span class="si">{</span><span class="n">cvModel</span><span class="o">.</span><span class="n">bestModel</span><span class="o">.</span><span class="n">getBootstrap</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;maxDepth: </span><span class="si">{</span><span class="n">cvModel</span><span class="o">.</span><span class="n">bestModel</span><span class="o">.</span><span class="n">getMaxDepth</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15078,9 +15079,10 @@ Some additional reading <a href="https://projector-video-pdf-converter.datacamp.
 Best model
 ==========
 
-CV Score: 3.97
+CV Score: 3.99
 numTrees: 100
-numTrees: 10</pre>
+bootstrap: True
+maxDepth: 10</pre>
 </div>
 </div>
 
