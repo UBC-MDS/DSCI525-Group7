@@ -6,14 +6,14 @@ import numpy as np
 app = Flask(__name__)
 
 # 1. Load your model here
-model = joblib.load(...)
+# model url: 'https://mds-s3-group7.s3.us-west-2.amazonaws.com/model.joblib'
+model = joblib.load('model.joblib')
 
 # 2. Define a prediction function
-def return_prediction(...):
-
+def return_prediction(content):
     # format input_data here so that you can pass it to model.predict()
-
-    return model.predict(...)
+    
+    return model.predict(np.array(content).reshape(1, -1))
 
 # 3. Set up home page using basic html
 @app.route("/")
@@ -24,8 +24,7 @@ def index():
     To use this service, make a JSON post request to the /predict url with 25 climate model outputs.
     
     You may use the following curl command:
-    curl -X POST http://127.0.0.1:5000/predict -d '{"cm1":"value", "cm2":"value", "cm3":"value", "cm4":"value", "cm5":"value", "cm6":"value", "cm7":"value", "cm8":"value", "cm9":"value", "cm10":"value", "cm11":"value", "cm12":"value", "cm13":"value", "cm14":"value", "cm15":"value", "cm16":"value", "cm17":"value", "cm18":"value", "cm19":"value", "cm20":"value", "cm21":"value", "cm22":"value", "cm23":"value", "cm24":"value", "cm25":"value"
-}' -H "Content-Type: application/json"
+    curl -X POST http://54.202.154.96:8080/predict -d '{"data":[1,2,3,4,53,11,22,37,41,53,11,24,31,44,53,11,22,35,42,53,12,23,31,42,53]}' -H "Content-Type: application/json"
     """
 
 # 4. define a new route which will accept POST requests and return model predictions
@@ -33,36 +32,8 @@ def index():
 def rainfall_prediction():
     content = request.json  # this extracts the JSON content we sent
 
-    # Capturing the 25 climate model inputs
-    cm1 = content[cm1]
-    cm2 = content[cm2]
-    cm3 = content[cm3]
-    cm4 = content[cm4]
-    cm5 = content[cm5]
-    cm6 = content[cm6]
-    cm7 = content[cm7]
-    cm8 = content[cm8]
-    cm9 = content[cm9]
-    cm10 = content[cm10]
-    cm11 = content[cm11]
-    cm12 = content[cm12]
-    cm13 = content[cm13]
-    cm14 = content[cm14]
-    cm15 = content[cm15]
-    cm16 = content[cm16]
-    cm17 = content[cm17]
-    cm18 = content[cm18]
-    cm19 = content[cm19]
-    cm20 = content[cm20]
-    cm21 = content[cm21]
-    cm22 = content[cm22]
-    cm23 = content[cm23]
-    cm24 = content[cm24]
-    cm25 = content[cm25]
-
-    prediction = return_prediction(cm1, cm2, cm3, cm4, cm5, cm6, cm7, cm8, cm9, cm10, cm11, cm12, cm13,
-                                   cm14, cm15, cm16, cm17, cm18, cm19, cm20, cm21, cm22, cm23, cm24, cm25)
-    results = {"Input Climate Models": name,
-               "Output": f"Prediction: {prediction}!"}  # return whatever data you wish, it can be just the prediction
-                                                        # or it can be the prediction plus the input data, it's up to you
-    return jsonify(results)
+    prediction = round(return_prediction(content['data'])[0],2)
+    results = {"Output": f"Prediction: {prediction} mm of rainfall!"}  # return predictions
+        
+    rtn = jsonify(results)
+    return rtn
